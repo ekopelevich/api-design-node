@@ -4,18 +4,18 @@
 
 var express = require('express');
 var app = express();
-var fs = require('fs');
+//var fs = require('fs');
 
 app.use(express.static('public'));
 
 var jsonData = {count: 12, message: 'hey'};
 
 app.get('/', function(req, res){
-  var index = fs.readFile('../index', function (err, data) {
-    if (err) throw err;
+  res.sendFile(__dirname + '/index.html', function (err, data) {
+    if (err) {
+      res.status(500).send(err);
+    }
   });
-  res.send(index);
-
 });
 
 app.get('/data', function(req, res){
