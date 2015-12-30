@@ -4,7 +4,7 @@
 
 var express = require('express');
 var app = express();
-//var fs = require('fs');
+// var fs = require('fs');
 
 app.use(express.static('public'));
 
@@ -16,6 +16,14 @@ app.get('/', function(req, res){
       res.status(500).send(err);
     }
   });
+
+  // Alternatively, you could you use the fs module to access the file system
+  // fs.readFile('index.html', function(err, buffer){
+  //   var html = buffer.toString();
+  //   res.setHeader('Content-Type', 'text/html');
+  //   res.send(html);
+  // });
+
 });
 
 app.get('/data', function(req, res){
